@@ -1,6 +1,27 @@
-# TODO: Require necessary libraries for nokogiri sqlite3 and anything else
+require 'open-uri'
+require 'nokogiri'
+require 'sqlite3'
 
 # Nice to have: dynamic location and distance range to create query to Stackoverflow board (i.e. this file receives 'new york' as the location and '20' as the mile range which to look at on stackoverflow)
+# TODO: Create db
+
+db = SQLite3::Database.new("jobs.db")
+
+sql = <<SQL
+CREATE table students 
+(	id INTEGER PRIMARY KEY,
+	title TEXT,
+	employer TEXT,
+	location TEXT,
+	description TEXT,
+	skills TEXT,
+	about_employer TEXT
+	);
+SQL
+
+db.execute sql
+
+# Nice to have: Put this database creation logic in another spot
 
 
 
