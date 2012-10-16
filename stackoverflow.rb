@@ -26,6 +26,10 @@ db.execute sql
 
 
 # TODO: Load main Stack Overflow into Nokogiri
+uri = "http://careers.stackoverflow.com/jobs?searchTerm=ruby&location=new+york&range=20"
+job_links = []
+
+doc = Nokogiri::HTML(open(uri))
 
 
 # TODO: Parse out the links from the main index page to the individual jobs pages, put this into an array
