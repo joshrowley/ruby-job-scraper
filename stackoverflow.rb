@@ -10,7 +10,7 @@ FileUtils.rm("jobs.db") if File.exists?("jobs.db")
 db = SQLite3::Database.new "jobs.db"
 
 sql = <<SQL
-CREATE table students 
+CREATE table jobs 
 (	id INTEGER PRIMARY KEY,
 	title TEXT,
 	employer TEXT,
@@ -51,13 +51,27 @@ job_links.each do |link|
 	title = doc.css('a.title').text.strip
 	employer = doc.css('a.employer').text.strip
 	employer_link = doc.css('a.employer').first["href"]
-	puts employer_link
+	location = doc.css('span.location').text.strip
+	description = doc.css('div.description')[0].text.strip
+	skills = if doc.css('div.description')[1]
+				doc.css('div.description')[1].text.strip
+			else
+				""
+			end
+	about_employer = if doc.css('div.description')[2]
+						doc.css('div.description')[2].text.strip
+					else
+						""
+					end
+	
 
 
 
 
 
 #TODO: Save to the database
+
+db.execute("INSERT INTO jobs (title, employer, employer_link, location, description, skills, about_employer) VALUES (?, ?, ?, ?, ?, ?, ?)", title, employer, employer_link, location, description, skills, about_employer)
 
 end
 
