@@ -7,6 +7,7 @@ CREATE table students
 (	id INTEGER PRIMARY KEY,
 	title TEXT,
 	employer TEXT,
+	employer_link TEXT,
 	location TEXT,
 	description TEXT,
 	skills TEXT,
