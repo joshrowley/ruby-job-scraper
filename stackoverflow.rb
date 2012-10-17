@@ -17,14 +17,15 @@ require_relative 'db_create.rb'
 # job_links = doc.css('a.title').map do |obj|
 # 	"http://careers.stackoverflow.com#{obj["href"]}"
 # end
-
+city = @city.gsub(" ", "+")
+distance = @distance
 
 
 job_links = []
 is_there_a_next_page = true
 page = 1
 while is_there_a_next_page == true
-	uri = "http://careers.stackoverflow.com/jobs?searchTerm=ruby&location=new+york&range=20&pg=#{page}"
+	uri = "http://careers.stackoverflow.com/jobs?searchTerm=ruby&location=#{city}&range=#{distance}&pg=#{page}"
 	doc = Nokogiri::HTML(open(uri))
 	this_pages_links = doc.css('a.title').map do |obj|
 	"http://careers.stackoverflow.com#{obj["href"]}"
