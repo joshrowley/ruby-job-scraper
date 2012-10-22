@@ -1,5 +1,4 @@
 def choose_board
-	
 	job_boards = {
 		:stack => "Careers 2.0 by stackoverflow"
 	}

@@ -40,43 +40,6 @@ end
 
 
 
-
-# page =  2
-# until page.empty?
-# 	uri = "#{uri}&pg=#{page}"
-
-
-
-# doc = Nokogiri::HTML(open(next_page_uri))
-# next_page_job_links = doc.css('a.title').map do |obj|
-# 	"http://careers.stackoverflow.com#{obj["href"]}"
-# end
-
-# third_page_uri = "#{uri}&pg=3"
-# doc = Nokogiri::HTML(open(third_page_uri))
-# third_links = doc.css('a.title').map do |obj|
-# 	"http://careers.stackoverflow.com#{obj["href"]}"
-# end
-# if third_links.empty?
-# 	puts "true"
-# end
-
-#if the previous button is on the page
-# check if next button is on the page
-# then grab the second prev-next class button's href in nokogiri
-
-
-# parse next button
-# if it exists, extract the link
-# run job_links again on this new page
-# check if there's another link
-
-#NICE TO HAVE: Check if there's another page
-# while next_page.exists?
-# run the loop
-#If there is go to the link on that page and add those job links into the individual jobs array as well.
-
-
 job_links.each do |link|
 	doc = Nokogiri::HTML(open(link))
 
